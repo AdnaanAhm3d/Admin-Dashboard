@@ -4,7 +4,7 @@ import { CssBaseLine, ThemeProvide } from '@mui/material'
 function App() {
   return (
     <div className='app'>
-      <h2>helloo</h2>
+      <h2>byee</h2>
     </div>
   )
 }

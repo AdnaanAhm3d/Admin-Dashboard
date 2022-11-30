@@ -36,3 +36,20 @@ body,
 ::-webkit-scrollbar-track:hover {
   background: #555;
 }
+
+/* Calender prompt!! */
+
+.calenderPrompt {
+  z-index: 99;
+  position: absolute;
+  /* opacity: 100%; */
+  display: grid;
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.promptSection {
+  background: red;
+}

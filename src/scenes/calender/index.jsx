@@ -4,6 +4,9 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import timeGridPlugin from '@fullcalendar/timegrid'
 import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list'
+import CloseIcon from '@mui/icons-material/Close'
+import { Button } from '@mui/material'
+import { Input, OutlinedInput } from '@mui/material'
 import {
   Box,
   List,
@@ -50,13 +53,52 @@ const Calendar = () => {
   return (
     <>
       {prompt && (
-        <div className='calenderPrompt'>
+        <Box
+          className='calenderPrompt'
+          // sx={{
+          //   zIndex: '99',
+          //   position: 'absolute',
+
+          //   /* opacity: 100%; */
+          //   display: 'grid',
+          //   placeItems: 'center',
+          //   width: '100vw',
+          //   height: '100vh',
+          //   background: 'rgba(0, 0, 0, 0.8)',
+          // }}
+        >
           <div className='promptSection'>
-            <h3>Enter your Data</h3>
-            <input type='text' />
-            <button>enter</button>
+            <h3 className='promptTitle'>Input your task</h3>
+            <OutlinedInput
+              size='small'
+              type='text'
+              sx={{
+                margin: '0',
+                marginBottom: '20px',
+                padding: '0',
+                width: '300px',
+              }}
+            />
+
+            <Button
+              variant='contained'
+              className='buttonPrompt'
+              sx={{
+                background: '#535ac8',
+                maxWidth: '100px',
+                // alignContent: 'center',
+                // textAlign: 'center',
+                // justifySelf: 'center',
+                '&:hover': {
+                  backgroundColor: 'green',
+                },
+              }}
+            >
+              Enter
+            </Button>
+            <CloseIcon className='closeIconPrompt' />
           </div>
-        </div>
+        </Box>
       )}
       <Box m='20px'>
         <Header title='Calendar' subtitle='Full Calendar Interactive Page' />

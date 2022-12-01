@@ -11,7 +11,7 @@ import Team from './scenes/team/index'
 import Form from './scenes/form/index'
 import Calender from './scenes/calender/index'
 import FAQ from './scenes/faq/index'
-// import Bar from './scenes/global/bar'
+import Bar from './scenes/bar/index'
 // import Line from './scenes/global/line'
 // import Pie from './scenes/global/pie'
 // import Geography from './scenes/global/geography'
@@ -37,7 +37,7 @@ function App() {
               <Route path='/form' element={<Form />} />
               <Route path='/calendar' element={<Calender />} />
               <Route path='/faq' element={<FAQ />} />
-              {/* <Route path='/bar' element={<Bar />} /> */}
+              <Route path='/bar' element={<Bar />} />
               {/* <Route path='/pie' element={<Pie />} /> */}
               {/* <Route path='/line' element={<Line />} /> */}
               {/* <Route path='/geography' element={<Geography />} /> */}

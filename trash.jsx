@@ -21,48 +21,47 @@ import { tokens } from '../../theme'
 const Calendar = () => {
   const theme = useTheme()
   const colors = tokens(theme.palette.mode)
+  const [prompt, setPrompt] = useState(false)
   const [currentEvents, setCurrentEvents] = useState([])
-  const [customPrompt, setCustomPrompt] = useState(false)
   const [text, setText] = useState('')
 
-  let lettitle = ''
-
   const closeModal = () => {
-    setCustomPrompt(false)
+    setPrompt(false)
   }
 
   const handleSubmit = () => {
-    // setText('')
-    setCustomPrompt(false)
-    return text
+    console.log(text)
   }
 
   const handleDateClick = (selected) => {
-    setCustomPrompt(true)
-    const title = handleSubmit()
+    const title = prompt('Please enter a new title for your event')
     const calendarApi = selected.view.calendar
     calendarApi.unselect()
 
-    calendarApi.addEvent({
-      title,
-      start: selected.startStr,
-      end: selected.endStr,
-      allDay: selected.allDay,
-    })
-
-    if (customPrompt) {
+    if (title) {
+      calendarApi.addEvent({
+        id: `${selected.dateStr}-${title}`,
+        title,
+        start: selected.startStr,
+        end: selected.endStr,
+        allDay: selected.allDay,
+      })
     }
-
-    // if (title) {
-    //   calendarApi.addEvent({
-    //     id: `${selected.dateStr}-${title}`,
-    //     title,
-    //     start: selected.startStr,
-    //     end: selected.endStr,
-    //     allDay: selected.allDay,
-    // //   })
-    // }
   }
+
+  // const handleDateClick = (selected) => {
+  //   setPrompt(true)
+  //   console.log(`you clicked me`)
+  //   const calendarApi = selected.view.calendar
+  //   // // calendarApi.unselect()
+
+  //   calendarApi.addEvent({
+  //     start: selected.startStr,
+  //     end: selected.endStr,
+  //     allDay: selected.allDay,
+  //     eventContent: { html: '<i>some html</i>' },
+  //   })
+  // }
 
   const handleEventClick = (selected) => {
     if (
@@ -76,7 +75,7 @@ const Calendar = () => {
 
   return (
     <>
-      {customPrompt && (
+      {prompt && (
         <Box
           className='calenderPrompt'
           // sx={{
@@ -126,6 +125,7 @@ const Calendar = () => {
           </div>
         </Box>
       )}
+
       <Box m='20px'>
         <Header title='Calendar' subtitle='Full Calendar Interactive Page' />
 
